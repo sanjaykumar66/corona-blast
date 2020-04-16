@@ -15,7 +15,7 @@ ABLAST.registerBullet(
       },
       'collision-helper': {
         debug: false,
-        radius: 0.16
+        radius: 0.65
       },
       'json-model': {
         src: 'url(assets/models/enemy-bullet.json)'

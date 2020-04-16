@@ -9,12 +9,12 @@ ABLAST.registerEnemy(
         name: 'enemy2',
         bulletName: 'enemy-medium',
         color: '#FF5533',
-        scale: 1.3,
+        scale: 0.5,
         health: 3
       },
       'collision-helper': {
         debug: false,
-        radius: 0.6
+        radius: 1.2
       },
       'gltf-model': {
         src: 'url(assets/models/corona/scene.gltf)',
@@ -25,8 +25,8 @@ ABLAST.registerEnemy(
   // implementation
   {
     init: function () {
-      this.shootingDelay = 2000;
-      this.warmUpTime = 800;
+      this.shootingDelay = 2500;
+      this.warmUpTime = 2500;
       this.reset();
     },
     reset: function () {
@@ -51,7 +51,7 @@ ABLAST.registerEnemy(
           this.el.components.enemy.shoot(time, delta);
           this.lastShoot = time;
           this.willShootEmited = false;
-          this.actualShootingDelay = this.shootingDelay * (Math.random() < 0.2 ? 2 : 1);
+          this.actualShootingDelay = this.shootingDelay * (Math.random() < 0.7 ? 2 : 1);
         }
       }
       else if (!this.willShootEmited && time - this.lastShoot > this.actualShootingDelay - this.warmUpTime) {

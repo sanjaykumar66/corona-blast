@@ -47,11 +47,11 @@ AFRAME.registerComponent('explosion', {
     switch(this.data.type) {
       case 'enemy':
         this.parts = [
-          {textureIdx: 2, billboard: true,  color: 16777215, scale: 1.5, grow: 4, dispersion: 0, copies: 1, speed: 0 },
-          {textureIdx: 0, billboard: true,  color: 16777215, scale: 0.4, grow: 2, dispersion: 2.5, copies: 1, speed: 1 },
-          {textureIdx: 3, billboard: false, color: this.data.color, scale: 1, grow: 6, dispersion: 0, copies: 1, speed: 0 },
-          {textureIdx: 1, billboard: true,  color: 16577633, scale: 0.04, grow: 2, dispersion: 3, copies: 20, speed: 2},
-          {textureIdx: 3, billboard: true,  color: this.data.color, scale: 0.2, grow: 2, dispersion: 2, copies: 5, speed: 1}
+          {textureIdx: 2, billboard: true,  color: 16777215, scale: 0.5, grow: 6, dispersion: 0, copies: 1, speed: 0 },
+          {textureIdx: 0, billboard: true,  color: 16777215, scale: 0.5, grow: 6, dispersion: 2.5, copies: 1, speed: 1 },
+          {textureIdx: 3, billboard: false, color: this.data.color, scale: 0.5, grow: 10, dispersion: 0, copies: 1, speed: 0 },
+          {textureIdx: 1, billboard: true,  color: 16577633, scale: 0.5, grow: 6, dispersion: 3, copies: 20, speed: 2},
+          {textureIdx: 3, billboard: true,  color: this.data.color, scale: 0.5, grow: 6, dispersion: 2, copies: 5, speed: 1}
         ];
       break;
       case 'bullet':

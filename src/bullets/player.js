@@ -28,7 +28,7 @@ ABLAST.registerBullet(
       var el = this.el;
       var color = this.bullet.components.bullet.color;
       el.setAttribute('material', 'color', color);
-      el.setAttribute('scale', {x: 0.2, y: 0.2, z: 0.2});
+      el.setAttribute('scale', {x: 0.5, y: 0.5, z: 0.5});
       this.trail = null;
       var self = this;
       el.addEventListener('model-loaded', function(event) {
@@ -40,7 +40,7 @@ ABLAST.registerBullet(
     },
     reset: function () {
       var el = this.el;
-      el.setAttribute('scale', {x: 0.2, y: 0.2, z: 0.2});
+      el.setAttribute('scale', {x: 0.5, y: 0.5, z: 0.5});
       if (this.trail) {
         this.trail.scale.setY(0.001);
       }

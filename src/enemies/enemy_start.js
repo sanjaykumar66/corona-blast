@@ -14,12 +14,10 @@ ABLAST.registerEnemy(
       },
       'collision-helper': {
         debug: false,
-        radius: 0.4
+        radius: 1.2
       },
-      'json-model': {
-        src: 'url(assets/models/enemy0.json)',
-        texturePath: 'url(assets/images/)',
-        singleModel: true
+      'gltf-model': {
+        src: 'url(assets/models/corona/scene.gltf)',
       }
     },
     poolSize: 1
@@ -27,13 +25,14 @@ ABLAST.registerEnemy(
   // implementation
   {
     init: function () {
-      this.shootingDelay = 3000;
-      this.warmUpTime = 1000;
+      this.shootingDelay = 2500;
+      this.warmUpTime = 2500;
       this.reset();
     },
     reset: function () {
       var el = this.el;
       var sc = this.data.scale;
+      console.log(sc);
       el.addEventListener('model-loaded', function(event) {
         el.getObject3D('mesh').scale.set(sc, sc, sc);
       });

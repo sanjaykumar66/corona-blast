@@ -26,8 +26,11 @@ AFRAME.registerComponent('shoot', {
 
     // Add keyboard listener.
     if (data.spaceKeyEnabled) {
+      console.log("RG");
       window.addEventListener('keydown', function (evt) {
-        if (evt.code === 'Space' || evt.keyCode === '32') { self.shoot(); }
+        if (evt.code === 'Space' || evt.keyCode === '32') { 
+          self.shoot(); 
+        }
       });
     }
 /*

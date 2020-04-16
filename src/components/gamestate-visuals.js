@@ -85,6 +85,7 @@ AFRAME.registerComponent('gamestate-visuals', {
   mainMenu: function () {
     var self = this;
     this.startEnemy.setAttribute('position', '0 -5 -4');
+    this.startEnemy.setAttribute('scale', '0.5 0.5 0.5');
     this.startEnemy.setAttribute('visible', true);
     this.mainMenuGroup.setAttribute('visible', true);
 

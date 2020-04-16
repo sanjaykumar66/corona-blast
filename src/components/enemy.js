@@ -25,10 +25,10 @@ AFRAME.registerComponent('enemy', {
     this.paused = false;
 
     var self = this;
-    this.el.addEventListener('model-loaded', function(event) {
-        self.el.components['gltf-model'].playAnimation('fly', true);
-        self.hipBone = self.el.object3D.children[3].children[0];
-    });
+    // this.el.addEventListener('model-loaded', function(event) {
+    //     self.el.components['gltf-model'].playAnimation('fly', true);
+    //     self.hipBone = self.el.object3D.children[3].children[0];
+    // });
 
     // gun glow
     this.gunGlowMaterial = new THREE.MeshBasicMaterial({
@@ -133,7 +133,7 @@ AFRAME.registerComponent('enemy', {
 
     this.lastShootTime = time;
 
-    this.gunGlow.scale.set(3, 3, 3);
+    this.gunGlow.scale.set(1, 1, 1);
     this.gunGlowMaterial.opacity = 1;
 
 /*
@@ -207,8 +207,8 @@ AFRAME.registerComponent('enemy', {
       }
       var t0 = (time - this.explodingTime) / this.explodingDuration;
 
-      var scale = this.scale + t0 * ( 2 - t0 ); //out easing
-
+     // var scale = this.scale + t0 * ( 2 - t0 ); //out easing
+        var scale = 0;
       var mesh = this.el.getObject3D('mesh');
       mesh.scale.set(scale, scale, scale);
       mesh.material.opacity = Math.max(0, 1 - t0 * 2.5);

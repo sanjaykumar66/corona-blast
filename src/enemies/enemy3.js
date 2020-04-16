@@ -9,7 +9,7 @@ ABLAST.registerEnemy(
         name: 'enemy3',
         bulletName: 'enemy-fat',
         color: '#8762FF',
-        scale: 2.5,
+        scale: 0.5,
         health: 30
       },
       'collision-helper': {
@@ -25,8 +25,8 @@ ABLAST.registerEnemy(
   // implementation
   {
     init: function () {
-      this.shootingDelay = 800;
-      this.warmUpTime = 500;
+      this.shootingDelay = 2500;
+      this.warmUpTime = 2500;
       this.reset();
     },
     reset: function () {
@@ -51,7 +51,7 @@ ABLAST.registerEnemy(
           this.el.components.enemy.shoot(time, delta);
           this.lastShoot = time;
           this.willShootEmited = false;
-          this.actualShootingDelay = this.shootingDelay * (Math.random() < 0.3 ? 2 : 1);
+          this.actualShootingDelay = this.shootingDelay * (Math.random() < 0.7 ? 2 : 1);
         }
       }
       else if (!this.willShootEmited && time - this.lastShoot > this.actualShootingDelay - this.warmUpTime) {

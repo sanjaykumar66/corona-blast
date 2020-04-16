@@ -9,12 +9,12 @@ ABLAST.registerEnemy(
         name: 'enemy0',
         bulletName: 'enemy-slow',
         color: '#FFB911',
-        scale: 1.5,
+        scale: 0.5,
         health: 1
       },
       'collision-helper': {
         debug: false,
-        radius: 0.4
+        radius: 1.2
       },
       'gltf-model': {
         src: 'url(assets/models/corona/scene.gltf)',
@@ -25,8 +25,8 @@ ABLAST.registerEnemy(
   // implementation
   {
     init: function () {
-      this.shootingDelay = 3000;
-      this.warmUpTime = 1000;
+      this.shootingDelay = 2500;
+      this.warmUpTime = 2500;
       this.reset();
     },
     reset: function () {

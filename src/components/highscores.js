@@ -10,6 +10,7 @@ AFRAME.registerSystem('highscores', {
     const Http = new XMLHttpRequest();
 const url='http://instamateadmin.glitch.me/highscore';
 Http.open("GET", url);
+Http.setRequestHeader("Access-Control-Allow-Origin", "*");
 Http.send();
 
     if (!this.isHighScore()) {
@@ -69,6 +70,8 @@ Http.send();
     this.sceneEl.addEventListener('gamestate-changed', function (evt) {
       if ('state' in evt.detail.diff) {
         if (evt.detail.state.state === 'STATE_GAME_OVER' || evt.detail.state.state === 'STATE_GAME_WIN') {
+          var text = `Hi Friends! Try to beat my score  `+ABLAST.currentScore.points+` Click on this link and beat my score https://coronablast.glitch.me/ `;
+          document.getElementById('what_share').href="https://api.whatsapp.com/send?text="+text;
           ablastUI.style.display = self.isHighScore(ABLAST.currentScore) ? 'block' : 'none';
         }
       }
@@ -92,10 +95,14 @@ Http.send();
   addNewScore: function (data) {
     // Check if we need to insert it
 
+
+
+ 
     var http = new XMLHttpRequest();
     var url = 'http://instamateadmin.glitch.me/addscore';
     http.open('POST', url);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    http.setRequestHeader("Access-Control-Allow-Origin", "*");
     http.send(JSON.stringify(data));
     http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {

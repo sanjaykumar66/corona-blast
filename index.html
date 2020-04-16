@@ -5,6 +5,8 @@
     <title>Corona-Blast</title>
     <meta name="description" content="A WebVR wave shooter game using A-Frame by Mozilla VR.">
     <meta name="theme-color" content="#3d4d55">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <!--<script src="vendor/aframe-master.min.js"></script>-->
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="build/build.js"></script>
@@ -13,9 +15,10 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/boot.css">
     <link rel="stylesheet" href="css/font.css">
-
+<script src="css/ajax.js"></script>
     <link rel="icon" href="assets/images/icon-128.png">
     <link rel="manifest" href="manifest.webmanifest">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=677597146376950&autoLogAppEvents=1"></script>
   </head>
   <body>
     <a-scene countdown="start: 05:00; value: 00:00" gamestate="health: 5; wave: 0" gamestate-visuals="" decals="maxDecals: 30; src: #bulletDecal; size: 0.3" vr-analytics>
@@ -99,6 +102,7 @@
           material="shader: flat; side: back; transparent: true; opacity: 0; depthTest: false; src: #hurtImg">
           <a-animation id="player-hit-anim" attribute="material.opacity" to="1" from="0" begin="player-hit" direction="alternate" dur="200" repeat="1"></a-animation>
         </a-entity>
+        <a-cursor material="color:#2979ff"></a-cursor>
       </a-entity>
 
       <!-- Hands. -->
@@ -156,11 +160,11 @@
         <a-entity id="logo" json-model="src:url(assets/models/logo.json)" animate-message=""></a-entity>
         <a-entity id="start_enemy"
           enemy="name: enemy_start; canShoot: false"
-          collision-helper="radius: 0.65"
+          collision-helper="radius: 1.2"
           gltf-model="
           src: url(assets/models/corona/scene.gltf);"
           position="0 1.2 -7"
-          scale="1.3 1.3 1.3">
+          scale="0.5 0.5 0.5">
         </a-entity>
       </a-entity>
 
@@ -184,6 +188,18 @@
       </a-entity>
     </a-scene>
 
+    <div style="
+    position: absolute;
+    font-family: Helvetica, Arial, sans-serif;
+    position: absolute;
+    bottom: 20px;
+    line-height: 1.2em;
+    background-color: rgba(10,10,10,0.8);
+    border-radius: 6px;
+    padding: 1.7em 2em;
+    display: block;">
+      <button id="shoot_button">SHOOT</button>
+    </div>
     <div id="ablast-ui" class="row">
 <div class="col-6">
     <div class="hiscore hided">
@@ -203,21 +219,34 @@
         </div>
         <div style="font-size: 30px;" class="row form">
           <div style="margin: 10px;" class="col-3">
-            <a href="">
+
+            <a target="_blank" href="" id="what_share" data-action="share/whatsapp/share">
               <i class="fab fa-whatsapp" aria-hidden="true"></i>
           </a>
           </div>
           <div style="margin: 10px;" class="col-3">
-            <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            <a target="_blank" href="mailto:"><i class="fa fa-envelope" aria-hidden="true"></i></a>
           </div>
           <div style="margin: 10px;" class="col-3">
-            <a href=""><i class="fab fa-facebook" aria-hidden="true"></i></a>
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcoronablast.glitch.me%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" data-href="https://coronablast.glitch.me/" data-layout="button" data-size="large"><i class="fab fa-facebook" aria-hidden="true"></i></a>
           </div>
           <div style="margin: 10px;" class="col-3">
             <a href=""><i class="fab fa-facebook-messenger" aria-hidden="true"></i></a>
-          </div>      
+          </div>   
+          <!-- <div class="fb-share-button" ><a >Share</a></div>    -->
       </div>
       </div></div>
     </div>
+
+    <script>
+     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if(isMobile){
+        window.onclick = function(e){
+        var fooComponent = document.querySelector('[shoot]').components.shoot;
+        fooComponent.shoot();
+        jQuery.Event( 'keydown', { keyCode: "32", which: "32" })
+      }
+      }
+    </script>
   </body>
 </html>
